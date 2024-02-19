@@ -9,7 +9,6 @@ const ball = document.getElementById('ball');
 document.addEventListener('keydown', handleKeyPress);
 let position = 0;
 
-
 /* responds to keypress by updating left and right position */
 function handleKeyPress(e) {
     if (e.code === 'ArrowLeft') {
