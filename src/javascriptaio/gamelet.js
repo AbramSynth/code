@@ -1,32 +1,38 @@
-/*
-Instructions: include gamelet.js, 
-
-gamelet is an html doc containing element with id of ball. detects right and left keyboard movements for what i dont know.
-
-*/
-
 const ball = document.getElementById('ball');
 document.addEventListener('keydown', handleKeyPress);
-let position = 0;
+let positionX = 0; // Horizontal position
+let positionY = 0; // Vertical position
 
-
-/* responds to keypress by updating left and right position */
+/* Responds to keypress by updating position */
 function handleKeyPress(e) {
+    // Horizontal movement
     if (e.code === 'ArrowLeft') {
-        position = position - 10;
+        positionX -= 10;
     }
     if (e.code === 'ArrowRight') {
-        position = position + 10;
-    } 
-    if (position < 0) {
-        position = 0;
+        positionX += 10;
     }
-    refresh ();
+    // Vertical movement
+    if (e.code === 'ArrowUp') {
+        positionY -= 10;
+    }
+    if (e.code === 'ArrowDown') {
+        positionY += 10;
+    }
+    
+    // Ensure the ball stays within bounds of the window
+    if (positionX < 0) {
+        positionX = 0;
+    }
+    if (positionY < 0) {
+        positionY = 0;
+    }
+    
+    refresh();
 }
 
-/* refresh changes position of ball */
-
+/* Refresh changes position of ball */
 function refresh() {
-    ball.style.left = position + 'px';
+    ball.style.left = positionX + 'px';
+    ball.style.top = positionY + 'px';
 }
-
